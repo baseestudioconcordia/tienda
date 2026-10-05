@@ -435,7 +435,7 @@ function closeAll(){["drawer","ov","modal"].forEach(i=>$(i).classList.remove("on
 function persist(msg){try{localStorage.setItem("be_draft",JSON.stringify(DATA));toast(msg||"Guardado en borrador")}catch(e){toast("⚠ Borrador lleno: descargá el JSON ahora")}tabs();grid();applyConfig();hk();if(ADMIN)adminBar()}
 function adminBar(){
   const a=$("admin");a.style.display="flex";
-  a.innerHTML=`<b>✏️ MODO EDITOR · versión 3</b><button class="btn" onclick="editP()">＋ Producto</button><button class="btn" onclick="catsM()">Categorías</button><button class="btn" onclick="colsM()">Colecciones</button><button class="btn" onclick="cfgM()">🎨 Personalizar página</button><button class="btn" onclick="dl()">⬇ Descargar productos.json</button><button class="btn" onclick="if(confirm('¿Volver a la versión publicada?')){localStorage.removeItem('be_draft');location.reload()}">Descartar cambios</button><button class="btn" onclick="try{sessionStorage.removeItem('be_auth')}catch(e){}location.reload()">🔒 Salir</button>`;
+  a.innerHTML=`<b>✏️ MODO EDITOR · versión 3</b><button class="btn" onclick="editP()">＋ Producto</button><button class="btn" onclick="catsM()">Categorías</button><button class="btn" onclick="colsM()">Colecciones</button><button class="btn" onclick="cfgM()">🎨 Personalizar página</button><button class="btn" onclick="dl()">⬇ Descargar para publicar</button><button class="btn" onclick="if(confirm('¿Volver a la versión publicada?')){localStorage.removeItem('be_draft');location.reload()}">Descartar cambios</button><button class="btn" onclick="try{sessionStorage.removeItem('be_auth')}catch(e){}location.reload()">🔒 Salir</button>`;
 }
 function editP(id,k){
   fp=id?{...DATA.productos.find(x=>x.id===id)}:{id:"",cat:DATA.categorias[0].id,nombre:"",precio:18000,colores:["Negro","Blanco"],imgs:[],col:k};
@@ -574,5 +574,6 @@ async function init(){
 }
 init();
 </script>
+<script src="imagenes.js"></script>
 </body>
 </html>
